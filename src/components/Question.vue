@@ -12,7 +12,7 @@
             <!-- Date time answers -->
             <div v-if="type === 'DATE_TIME'">
                 <b-datepicker :placeholder="trans('date_time_placeholder')" icon="calendar-today" :disabled="submitted" v-model="date" @input="updateDateTimeAnswer"></b-datepicker>
-                <b-timepicker :placeholder="trans('date_time_placeholder')" icon="clock" :disabled="submitted" :hour-format="format" v-model="time" @input="updateDateTimeAnswer"></b-timepicker>
+                <b-timepicker :placeholder="trans('date_time_placeholder')" :editable="true" icon="clock" :disabled="submitted" :hour-format="format" v-model="time" @input="updateDateTimeAnswer"></b-timepicker>
                 <b-field>
                     <b-switch v-model="formatAmPm" :disabled="submitted">AM/PM</b-switch>
                 </b-field>
@@ -36,10 +36,24 @@
 </template>
 
 <script>
-import axios from 'axios'
 import trans from './trans.js'
+import { Field } from 'buefy/dist/components/field'
+import { Input } from 'buefy/dist/components/input'
+import { Select } from 'buefy/dist/components/select'
+import { Timepicker } from 'buefy/dist/components/timepicker'
+import { Datepicker } from 'buefy/dist/components/datepicker'
+import { Switch } from 'buefy/dist/components/switch'
+import { Dialog } from 'buefy/dist/components/dialog'
 
 export default {
+    components: {
+        'b-field': Field,
+        'b-input': Input,
+        'b-select': Select,
+        'b-timepicker': Timepicker,
+        'b-datepicker': Datepicker,
+        'b-switch': Switch
+    },
     props: {
         lang: {
             required: true,
@@ -76,7 +90,8 @@ export default {
             type: null
         }
     },
-    created() {        
+    created() {
+        console.log(Dialog)      
         this.question = this.single_question.question;
         this.questionFr = this.single_question.translation.fr.question;
 
@@ -109,7 +124,7 @@ export default {
     },
     methods: {
         askChangeAnswer(event) {
-            this.$dialog.confirm({
+            Dialog.confirm({
                 title: this.trans('dialog_title'),
                 message: this.trans('dialog_message'),
                 cancelText: this.trans('dialog_cancel'),

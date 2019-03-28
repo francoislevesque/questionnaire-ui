@@ -7,8 +7,8 @@
   "scripts": {
     "start": "webpack-dev-server --config docs/webpack.config.js",
     "build": "rm -rf dist && NODE_ENV=production webpack",
+    "build-docs": "rm -rf docs/build && NODE_ENV=production webpack --config docs/webpack.config.js",
     "lint": "eslint --ext .js,.vue --fix src __tests__; exit 0",
-    "prepublish": "npm run test; npm run build",
     "test": "jest"
   },
   "repository": {
@@ -30,20 +30,26 @@
     "vue": "^2.3.0"
   },
   "devDependencies": {
+    "axios": "^0.18",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.16.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.4.0",
+    "buefy": "^0.7.3",
+    "cross-env": "^5.2.0",
     "css-loader": "^0.28.1",
     "eslint": "^3.7.1",
     "eslint-config-spatie": "^1.1.0",
     "jest": "^19.0.0",
     "jest-vue-preprocessor": "^0.2.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
     "vue": "^2.3.0",
     "vue-loader": "^12.0.3",
     "vue-template-compiler": "^2.3.0",
     "webpack": "^2.3.3",
+    "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^2.4.2",
     "webpack-merge": "^4.1.0"
   },

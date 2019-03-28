@@ -17,6 +17,7 @@
 import axios from 'axios'
 import question from './Question.vue'
 import trans from './trans.js'
+import config from '../config'
 
 export default {
     components: {'single-question': question},
@@ -39,13 +40,11 @@ export default {
         }
     },
     created() {
-        let config = {
+        axios.get(config.url + '/first-question?service_type_name=plomberie', {
             headers: {
                 'Access-Control-Allow-Origin': '*'
             }
-        }
-
-        axios.get(this.$laravel.helpmee.questionnaireApi + '/first-question?service_type_name=plomberie', config)
+        })
         .then(response => {
             this.questions.push(response.data);
         })
@@ -64,7 +63,7 @@ export default {
             }
         },
         nextQuestion(questionId) {
-            axios.get(this.$laravel.helpmee.questionnaireApi + `/question?id=${questionId}`)
+            axios.get(config.url + `/question?id=${questionId}`)
             .then(response => {
                 this.questions.push(response.data);
             })

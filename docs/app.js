@@ -1,8 +1,8 @@
 import Vue from 'vue';
-import { ExampleComponent } from '../src';
+import { Questionnaire } from '../src';
 
 new Vue({
-    components: { ExampleComponent },
+    components: { Questionnaire },
 
     el: '#app',
 });

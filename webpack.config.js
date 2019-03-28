@@ -14,6 +14,8 @@ module.exports = merge(require('./webpack.base'), {
     },
 
     externals: {
+        axios: 'axios',
+        buefy: 'buefy',
         vue: 'vue',
     },
 });

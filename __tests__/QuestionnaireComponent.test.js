@@ -1,13 +1,13 @@
-import { ExampleComponent } from '../src';
+import { Questionnaire } from '../src';
 import Vue from 'vue/dist/vue.js';
 
-describe('ExampleComponent', () => {
-    Vue.component('example-component', ExampleComponent);
+describe('Questionnaire', () => {
+    Vue.component('questionnaire', Questionnaire);
 
     beforeEach(() => {
         document.body.innerHTML = `
             <div id="app">
-                <example-component></example-component>
+                <questionnaire></questionnaire>
             </div>
         `;
     });
