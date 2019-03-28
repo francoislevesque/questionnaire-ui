@@ -32,18 +32,21 @@ export default {
             validator: function(value) {
                 return ['fr', 'en'].indexOf(value) !== -1;
             }
+        },
+        serviceType: {
+            required: true,
+            type: String
         }
     },
     data() {
         return {
             answers: [],
             isDone: false,
-            questions: [],
-            serviceType: null
+            questions: []
         }
     },
     created() {
-        axios.get(config.url + '/first-question?service_type_name=plomberie', {
+        axios.get(config.url + '/first-question?service_type_name=' + this.serviceType, {
             headers: {
                 'Access-Control-Allow-Origin': '*'
             }
@@ -51,7 +54,9 @@ export default {
         .then(response => {
             this.questions.push(response.data);
         })
-        .catch(error => { });
+        .catch(error => {
+            this.$emit('error', error)
+        });
     },
     methods: {
         editQuestion(payload) {
