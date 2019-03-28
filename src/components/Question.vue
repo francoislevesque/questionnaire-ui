@@ -29,8 +29,8 @@
             </b-select>
         </b-field>
         <div slot="buttons">
-            <button role="button" class="button is-primary" v-if="!submitted" :disabled="answer === null || answer === ''" @click="submitAnswer">{{ trans('next_button') }}</button>
-            <button role="button" class="button" v-if="submitted" @click="askChangeAnswer">{{ trans('edit_button') }}</button>
+            <button type="button" class="button is-primary" v-if="!submitted" :disabled="answer === null || answer === ''" @click="submitAnswer">{{ trans('next_button') }}</button>
+            <button type="button" class="button" v-if="submitted" @click="askChangeAnswer">{{ trans('edit_button') }}</button>
         </div>
     </div>
 </template>
