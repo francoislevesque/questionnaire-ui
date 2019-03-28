@@ -16,6 +16,11 @@ module.exports = merge(require('../webpack.base'), {
         alias: {
             vue: 'vue/dist/vue.js',
         },
-    }
+    },
+    
+    devServer: {
+        contentBase: __dirname,
+        port: 2000,
+    },
 
 });

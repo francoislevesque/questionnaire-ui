@@ -1,15 +1,18 @@
 <template>
-    <div class="questionnaire">
-        <div v-for="question in questions" :key="question.id">
-            <single-question
-                @answered="retrieveAnswer"
-                @ask-edit="editQuestion"
-                :single_question="question"
-                :lang="lang"
-                :questions_array_length="questions.length">
-            </single-question>
+    <div class="q-questionnaire">
+        <single-question
+            v-for="question in questions" :key="question.id"
+            @answered="retrieveAnswer"
+            @ask-edit="editQuestion"
+            :single_question="question"
+            :lang="lang"
+            :questions_array_length="questions.length">
+        </single-question>
+
+        <div class="q-card" v-if="isDone">
+            <h3 class="title is-6">Demande complétée. Appuyer sur le bouton ci-dessous pour envoyer votre demande.</h3>
+            <button type="button" class="button is-primary" @click="submitQuestionnaire">{{ trans('submit_button') }}</button>
         </div>
-        <button type="button" class="button is-primary" v-if="isDone" @click="submitQuestionnaire">{{ trans('submit_button') }}</button>
     </div>
 </template>
 
@@ -112,7 +115,6 @@ export default {
             });
 
             this.$emit('done', {answer: answer});
-            console.log(answer);
         },
         trans(key) {
             return trans[this.lang][key];
@@ -120,3 +122,34 @@ export default {
     }
 }
 </script>
+
+<style lang="scss">
+.q-questionnaire {
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.q-card {
+    border-bottom: 1px solid #e1e1e1;
+    padding: 1rem;
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+.inputs {
+    display: flex;
+    flex-wrap: wrap;
+
+    & > * {
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+}
+.mb-5 {
+    margin-bottom: 5px;
+}
+.mr-5 {
+    margin-right: 5px;
+}
+</style>

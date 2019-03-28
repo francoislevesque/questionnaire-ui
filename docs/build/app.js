@@ -14082,7 +14082,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
             };
         },
         created: function created() {
-            console.log(_dialog.Dialog);
             this.question = this.single_question.question;
             this.questionFr = this.single_question.translation.fr.question;
 
@@ -14327,7 +14326,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 });
 
                 this.$emit('done', { answer: answer });
-                console.log(answer);
             },
             trans: function trans(key) {
                 return _trans3.default[this.lang][key];
@@ -14424,7 +14422,7 @@ exports = module.exports = __webpack_require__(43)(false);
 
 
 // module
-exports.push([module.i, ".card[data-v-2216699b]{box-shadow:1px 1px 5px rgba(0,0,0,.1);padding:1rem;background-color:#fff}", ""]);
+exports.push([module.i, ".q-card[data-v-2216699b]{border-bottom:1px solid #e1e1e1;padding:1rem;background-color:#fff}", ""]);
 
 // exports
 
@@ -14867,6 +14865,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })], 1)
   }), _vm._v(" "), (_vm.isDone) ? _c('button', {
     staticClass: "button is-primary",
+    attrs: {
+      "type": "button"
+    },
     on: {
       "click": _vm.submitQuestionnaire
     }
@@ -14879,7 +14880,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "card"
+    staticClass: "q-card"
   }, [_c('div', {
     attrs: {
       "slot": "title"
@@ -14999,6 +15000,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [(!_vm.submitted) ? _c('button', {
     staticClass: "button is-primary",
     attrs: {
+      "type": "button",
       "disabled": _vm.answer === null || _vm.answer === ''
     },
     on: {
@@ -15006,6 +15008,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v(_vm._s(_vm.trans('next_button')))]) : _vm._e(), _vm._v(" "), (_vm.submitted) ? _c('button', {
     staticClass: "button",
+    attrs: {
+      "type": "button"
+    },
     on: {
       "click": _vm.askChangeAnswer
     }

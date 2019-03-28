@@ -1,6 +1,7 @@
 <template>
-    <div class="card">
-        <div slot="title">Question {{ questionNumber }}</div>
+    <div class="q-card">
+        <h3 class="heading mb-0">Question {{ questionNumber }}</h3>
+
         <b-field :label="questionDisplay">
             <!-- Range answers -->
             <b-select v-if="type === 'RANGE'" :placeholder="trans('select_placeholder')" v-model="answer" :disabled="submitted">
@@ -11,11 +12,11 @@
 
             <!-- Date time answers -->
             <div v-if="type === 'DATE_TIME'">
-                <b-datepicker :placeholder="trans('date_time_placeholder')" icon="calendar-today" :disabled="submitted" v-model="date" @input="updateDateTimeAnswer"></b-datepicker>
-                <b-timepicker :placeholder="trans('date_time_placeholder')" :editable="true" icon="clock" :disabled="submitted" :hour-format="format" v-model="time" @input="updateDateTimeAnswer"></b-timepicker>
-                <b-field>
+                <div class="inputs">
+                    <b-datepicker :placeholder="trans('date_time_placeholder')" icon="calendar-today" :disabled="submitted" v-model="date" @input="updateDateTimeAnswer"></b-datepicker>
+                    <b-timepicker :placeholder="trans('date_time_placeholder')" :editable="true" icon="clock" :disabled="submitted" :hour-format="format" v-model="time" @input="updateDateTimeAnswer"></b-timepicker>
                     <b-switch v-model="formatAmPm" :disabled="submitted">AM/PM</b-switch>
-                </b-field>
+                </div>
             </div>
 
             <!-- Text answers -->
@@ -91,7 +92,6 @@ export default {
         }
     },
     created() {
-        console.log(Dialog)      
         this.question = this.single_question.question;
         this.questionFr = this.single_question.translation.fr.question;
 
@@ -196,11 +196,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss" scoped>
-.card {
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
-    padding: 1rem;
-    background-color: #fff;
-}
-</style>

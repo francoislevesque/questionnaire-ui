@@ -27,12 +27,8 @@ npm install -g win-node-env
 To preview the questionnaire, run following commands:
 
 ```bash
-# Build
-npm run build-docs
-
-# Serve
-cd docs
-php -S localhost:8080
+# Build & Serve
+npm run start
 ```
 
 And open `localhost:8080` in the browser
