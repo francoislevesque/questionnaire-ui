@@ -1,5 +1,5 @@
 <template>
-    <d-card style="margin-top: 20px">
+    <div class="card">
         <div slot="title">Question {{ questionNumber }}</div>
         <b-field :label="questionDisplay">
             <!-- Range answers -->
@@ -32,7 +32,7 @@
             <button class="button is-primary" v-if="!submitted" :disabled="answer === null || answer === ''" @click="submitAnswer">{{ trans('next_button') }}</button>
             <button class="button" v-if="submitted" @click="askChangeAnswer">{{ trans('edit_button') }}</button>
         </div>
-    </d-card>
+    </div>
 </template>
 
 <script>
@@ -181,3 +181,11 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.card {
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    padding: 1rem;
+    background-color: #fff;
+}
+</style>

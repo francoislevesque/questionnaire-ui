@@ -1,18 +1,16 @@
 <template>
-    <d-layout>
-        <div class="container">
-            <div v-for="question in questions" :key="question.id">
-                <single-question
-                    @answered="retrieveAnswer"
-                    @ask-edit="editQuestion"
-                    :single_question="question"
-                    :lang="lang"
-                    :questions_array_length="questions.length">
-                </single-question>
-            </div>
-            <button class="button is-primary" v-if="isDone" @click="submitQuestionnaire">{{ trans('submit_button') }}</button>
+    <div class="questionnaire">
+        <div v-for="question in questions" :key="question.id">
+            <single-question
+                @answered="retrieveAnswer"
+                @ask-edit="editQuestion"
+                :single_question="question"
+                :lang="lang"
+                :questions_array_length="questions.length">
+            </single-question>
         </div>
-    </d-layout>
+        <button class="button is-primary" v-if="isDone" @click="submitQuestionnaire">{{ trans('submit_button') }}</button>
+    </div>
 </template>
 
 <script>

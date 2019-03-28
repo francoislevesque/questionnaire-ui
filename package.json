@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/spatie/questionnaire-ui",
   "peerDependencies": {
+    "axios": "^0.18",
+    "buefy": "^0.7.3",
     "vue": "^2.3.0"
   },
   "devDependencies": {
