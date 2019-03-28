@@ -9,7 +9,7 @@
                 :questions_array_length="questions.length">
             </single-question>
         </div>
-        <button class="button is-primary" v-if="isDone" @click="submitQuestionnaire">{{ trans('submit_button') }}</button>
+        <button role="button" class="button is-primary" v-if="isDone" @click="submitQuestionnaire">{{ trans('submit_button') }}</button>
     </div>
 </template>
 
